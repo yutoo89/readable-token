@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe Readable::Token do
   it "has a version number" do
     expect(Readable::Token::VERSION).not_to be nil
@@ -25,9 +27,9 @@ RSpec.describe Readable::Token do
     end
 
     it "raises an error if neither letters nor numbers are allowed" do
-      expect {
+      expect do
         Readable::Token.generate(allow_letters: false, allow_numbers: false)
-      }.to raise_error(Readable::Token::Error)
+      end.to raise_error(Readable::Token::Error)
     end
   end
 
@@ -53,9 +55,9 @@ RSpec.describe Readable::Token do
     end
 
     it "raises an error if neither letters nor numbers are allowed" do
-      expect {
+      expect do
         Readable::Token.variations(allow_letters: false, allow_numbers: false)
-      }.to raise_error(Readable::Token::Error)
+      end.to raise_error(Readable::Token::Error)
     end
   end
 end

@@ -23,8 +23,6 @@ module Readable
       charset.size**length
     end
 
-    private
-
     def self.build_charset(allow_letters, allow_numbers)
       charset = []
       charset += ("A".."Z").to_a if allow_letters
