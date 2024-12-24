@@ -9,7 +9,8 @@ Gem::Specification.new do |spec|
   spec.email = ["yuta.o.note@gmail.com"]
 
   spec.summary = "A gem to generate readable random tokens"
-  spec.description = "This gem generates random tokens that are easy to read and distinguish. It is designed for scenarios where tokens need to be printed or entered manually."
+  spec.description = "This gem generates random tokens that are easy to read and distinguish. " \
+                     "It is designed for scenarios where tokens need to be printed or entered manually."
   spec.homepage = "https://github.com/yutoo89"
   spec.license = "MIT"
   spec.required_ruby_version = ">= 3.0.0"
