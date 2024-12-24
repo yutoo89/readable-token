@@ -4,6 +4,8 @@ require "securerandom"
 require_relative "token/version"
 
 module Readable
+  # This module provides functionality for generating readable random tokens
+  # and calculating the number of possible token variations based on rules.
   module Token
     class Error < StandardError; end
 
