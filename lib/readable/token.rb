@@ -1,10 +1,36 @@
 # frozen_string_literal: true
 
+require "securerandom"
 require_relative "token/version"
 
 module Readable
   module Token
     class Error < StandardError; end
-    # Your code goes here...
+
+    DEFAULT_CHARSET = ("A".."Z").to_a + ("2".."9").to_a - %w[O I L]
+
+    def self.generate(length: 8, allow_letters: true, allow_numbers: true)
+      raise Error, "At least one of allow_letters or allow_numbers must be true" unless allow_letters || allow_numbers
+
+      charset = build_charset(allow_letters, allow_numbers)
+      Array.new(length) { charset[SecureRandom.random_number(charset.size)] }.join
+    end
+
+    def self.variations(length: 8, allow_letters: true, allow_numbers: true)
+      raise Error, "At least one of allow_letters or allow_numbers must be true" unless allow_letters || allow_numbers
+
+      charset = build_charset(allow_letters, allow_numbers)
+      charset.size**length
+    end
+
+    private
+
+    def self.build_charset(allow_letters, allow_numbers)
+      charset = []
+      charset += ("A".."Z").to_a if allow_letters
+      charset += ("2".."9").to_a if allow_numbers
+      charset -= %w[O I L]
+      charset
+    end
   end
 end
